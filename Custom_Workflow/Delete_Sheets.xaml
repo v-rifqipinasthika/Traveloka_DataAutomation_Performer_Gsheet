@@ -1,0 +1,162 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Delete_Sheets" this:Delete_Sheets.in_listSheetToRemove="[New List(of String)]" this:Delete_Sheets.in_listSheetToKeep="[New List(of String)]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_listSheetToRemove" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_listSheetToKeep" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_strFilePath" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>845.6,648.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Delete_Sheets_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.GSuite.Persistence</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.GSuite.Activities.Sheets</x:String>
+      <x:String>UiPath.GSuite.Activities.Contracts</x:String>
+      <x:String>Microsoft.Office.Interop.Excel</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Threading</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>Microsoft.Office.Interop.Excel</AssemblyReference>
+      <AssemblyReference>System.Threading.AccessControl</AssemblyReference>
+      <AssemblyReference>System.Threading</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Delete_Sheets" sap:VirtualizedContainerService.HintSize="499.2,584" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="436.8,472" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If in_listSheetToKeep.Count &gt; 0, remove all sheets other than in_listSheetToKeep.&#xA;If in_listSheetToRemove.Count &gt; 0, remove all sheets stated .in_listSheetToRemove." Code="Application xlApp = new Application();&#xA;&#xA;try&#xA;{&#xA;&#x9;Microsoft.Office.Interop.Excel.Workbook xlWorkbook = null;&#xA;&#xA;    // Number of attempts to open the workbook&#xA;    int maxAttempts = 2;&#xA;    int currentAttempt = 0;&#xA;&#xA;    // Time to wait between attempts (in milliseconds)&#xA;    int waitTime = 5000; // 5 seconds&#xA;&#xA;    while (currentAttempt &lt; maxAttempts)&#xA;    {&#xA;        try&#xA;        {&#xA;            xlWorkbook = xlApp.Workbooks.Open(in_strFilePath);&#xA;            break; // If successful, exit the loop&#xA;        }&#xA;        catch (Exception)&#xA;        {&#xA;            // File not ready, wait and then retry&#xA;&#x9;&#x9;&#x9;Console.WriteLine(&quot;Retry: &quot; + currentAttempt);&#xA;            Thread.Sleep(waitTime);&#xA;            currentAttempt++;&#xA;        }&#xA;    }&#xA;&#xA;    if (xlWorkbook == null)&#xA;    {&#xA;        // Handle the case where the workbook couldn't be opened after multiple attempts&#xA;        Console.WriteLine(&quot;Unable to open the workbook after multiple attempts.&quot;);&#xA;        return;&#xA;    }&#xA;&#xA;&#x9;xlApp.DisplayAlerts = false;&#xA;&#xA;&#x9;if(in_listSheetToKeep.Count() &gt; 0)&#xA;&#x9;{&#xA;&#x9;&#x9;List&lt;string&gt; sheetsToRemove = xlWorkbook.Sheets.Cast&lt;Worksheet&gt;()&#xA;&#x9;&#x9;    .Select(sheet =&gt; sheet.Name.ToUpper().Trim())&#xA;&#x9;&#x9;    .Except(in_listSheetToKeep.Select(sheet =&gt; sheet.ToUpper().Trim()))&#xA;&#x9;&#x9;    .ToList();&#xA;&#x9;&#x9;Console.WriteLine($&quot;SheetToRemove: {String.Join(&quot;, &quot;, sheetsToRemove)}&quot;);&#xA;&#x9;&#x9;foreach (string sheetToRemove in sheetsToRemove)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;foreach (Worksheet sheet in xlWorkbook.Sheets)&#xA;&#x9;        {&#xA;&#x9;            if (sheet.Name.ToUpper().Trim().Contains(sheetToRemove.ToUpper().Trim()))&#xA;&#x9;            {&#xA;&#x9;                sheet.Delete();&#xA;&#x9;                Console.WriteLine($&quot;Remove - Deleted sheet: {sheetToRemove}&quot;);&#xA;&#x9;                break; // Exit the inner loop once the sheet is deleted&#xA;&#x9;            }&#xA;&#x9;        }&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;else if(in_listSheetToRemove.Count() &gt; 0)&#xA;&#x9;{&#xA;&#x9;&#x9;foreach (string sheetToRemove in in_listSheetToRemove)&#xA;&#x9;&#x9;{&#xA;&#x9;        foreach (Worksheet sheet in xlWorkbook.Sheets)&#xA;&#x9;        {&#xA;&#x9;            if (sheet.Name.ToUpper().Trim().Contains(sheetToRemove.ToUpper().Trim()))&#xA;&#x9;            {&#xA;&#x9;                sheet.Delete();&#xA;&#x9;                Console.WriteLine($&quot;Remove - Deleted sheet: {sheetToRemove}&quot;);&#xA;&#x9;                break; // Exit the inner loop once the sheet is deleted&#xA;&#x9;            }&#xA;&#x9;        }&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#xA;&#x9;xlApp.DisplayAlerts = true;&#xA;&#xA;&#x9;xlApp.Visible = false;&#xA;    &#xA;    // Save Workbook&#xA;    xlWorkbook.Save();&#xA;&#xA;    // Close Workbook&#xA;    xlWorkbook.Close();&#xA;}&#xA;catch (Exception ex)&#xA;{&#xA;    throw ex;&#xA;}&#xA;finally&#xA;{&#xA;    // Close Excel Application&#xA;    xlApp.Quit();&#xA;}" DisplayName="Invoke Code - Delete Sheet" sap:VirtualizedContainerService.HintSize="333.6,240.8" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
+          <ui:InvokeCode.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[in_strFilePath]</InArgument>
+            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToKeep">[in_listSheetToKeep]</InArgument>
+            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToRemove">[in_listSheetToRemove]</InArgument>
+          </ui:InvokeCode.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeCode>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Throw Exception="[New Exception(exception.InnerException.ToString)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
