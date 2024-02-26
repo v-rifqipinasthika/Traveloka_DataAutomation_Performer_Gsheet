@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410.4,2890.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1410.4,2760</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>citibankvccprojectnameandpicdata_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -150,7 +150,7 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="VCC Citibank run daily" DisplayName="citibankvccprojectnameandpicdata" sap:VirtualizedContainerService.HintSize="624,2825.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="VCC Citibank run daily" DisplayName="citibankvccprojectnameandpicdata" sap:VirtualizedContainerService.HintSize="624,2695.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
@@ -298,7 +298,6 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_assetName">[in_Config("GlobalVarAsset").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Throw Exception="[New Exception(&quot;Test&quot;)]" sap:VirtualizedContainerService.HintSize="561.6,130.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
     <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[isFileExist]" sap:VirtualizedContainerService.HintSize="561.6,130.4" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[strFilePath]" PathType="File" />
     <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not(Not isFileExist Or in_isRerun)]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="561.6,1481.6" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
