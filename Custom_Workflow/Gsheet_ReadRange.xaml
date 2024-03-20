@@ -1,9 +1,10 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Gsheet_ReadRange" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ug="clr-namespace:UiPath.GSuite;assembly=UiPath.GSuite" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Gsheet_ReadRange" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ug="clr-namespace:UiPath.GSuite;assembly=UiPath.GSuite" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_dtRawData" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="in_range" Type="InArgument(x:String)" />
+    <x:Property Name="in_datePeriod" Type="InArgument(s:DateTime)" />
   </x:Members>
   <this:Gsheet_ReadRange.in_range>
     <InArgument x:TypeArguments="x:String" />
@@ -11,7 +12,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>501.6,658.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>933.6,923.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Gsheet_ReadRange_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -58,6 +59,7 @@
       <x:String>UiPath.GSuite.Persistence</x:String>
       <x:String>UiPath.GSuite.Activities.Drive</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -121,14 +123,39 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Gsheet_ReadRange" sap:VirtualizedContainerService.HintSize="512,593.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Gsheet_ReadRange" sap:VirtualizedContainerService.HintSize="512,858.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="sheetName" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="to replace format on remote path such as {yyyyMM}/{yyyy}&#xA;*need System.Text.RegularExpressions namespace " Code="string pattern = &quot;{(.*?)}&quot;;&#xA;Regex regex = new Regex(pattern);&#xA;string outputString = regex.Replace(remotePath, match =&gt;&#xA;{&#xA;    string format = match.Groups[1].Value;&#xA;    return dateTime.ToString(format);&#xA;});&#xA;finalRemotePath = outputString;" DisplayName="Invoke Code Define File Name" sap:VirtualizedContainerService.HintSize="449.6,264.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="remotePath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;Sheet Name&quot;).ToString" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="finalRemotePath">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="sheetName" />
+        </OutArgument>
+        <InArgument x:TypeArguments="s:DateTime" x:Key="dateTime">
+          <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_datePeriod" />
+        </InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
     <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope Use SAKey" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="449.6,504.8" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_Config(&quot;PathSAKey&quot;).ToString]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
       <uga:GSuiteApplicationScope.AuthenticationScopes>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
@@ -148,7 +175,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" sap2010:Annotation.AnnotationText="in_TransactionItem.SpecificContent(&quot;Gsheet Id&quot;).ToString" AuthScopesInvalid="False" DisplayName="Read Range User Config" sap:VirtualizedContainerService.HintSize="353.6,283.2" sap2010:WorkflowViewState.IdRef="ReadRange_1" IncludeHeaders="False" Range="[in_range]" Result="[out_dtRawData]" SheetName="[in_TransactionItem.SpecificContent(&quot;Sheet Name&quot;).ToString]" SpreadsheetId="[in_TransactionItem.SpecificContent(&quot;Gsheet Id&quot;).ToString]">
+            <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" sap2010:Annotation.AnnotationText="in_TransactionItem.SpecificContent(&quot;Gsheet Id&quot;).ToString" AuthScopesInvalid="False" DisplayName="Read Range User Config" sap:VirtualizedContainerService.HintSize="353.6,283.2" sap2010:WorkflowViewState.IdRef="ReadRange_1" IncludeHeaders="False" Range="[in_range]" Result="[out_dtRawData]" SheetName="[sheetName]" SpreadsheetId="[in_TransactionItem.SpecificContent(&quot;Gsheet Id&quot;).ToString]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
