@@ -1,6 +1,5 @@
 {
   "name": "Traveloka_DataAutomation_Performer_Gsheet",
-  "projectId": "20e20b51-708e-4844-bd3d-41c41f5388c1",
   "description": "Traveloka_DataAutomation_Performer_Gsheet",
   "main": "Main.xaml",
   "dependencies": {
@@ -19,7 +18,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.0.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.0.1",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -27,7 +26,6 @@
     "isAttended": false,
     "requiresUserInteraction": true,
     "supportsPersistence": false,
-    "workflowSerialization": "DataContract",
     "excludedLoggedData": [
       "Private:*",
       "*password*"
@@ -92,8 +90,7 @@
         "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
       }
     ],
-    "modernBehavior": false,
-    "saveToCloud": false
+    "modernBehavior": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
