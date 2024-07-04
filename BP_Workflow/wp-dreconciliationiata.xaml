@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="wp_dreconciliationiataid02" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="wp_dreconciliationiataid02" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_dicPath" Type="InArgument(scg:Dictionary(x:String, x:String))" />
     <x:Property Name="in_datePeriod" Type="InArgument(s:DateTime)" />
@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410,3102</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1103.2,2884</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>wp-dreconciliationiataid02_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="49">
@@ -152,7 +152,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="wp-d run monthly" DisplayName="wp-dreconciliationiataid02" sap:VirtualizedContainerService.HintSize="695,3037" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="wp-d run monthly" DisplayName="wp-dreconciliationiataid02" sap:VirtualizedContainerService.HintSize="695.2,2819.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
@@ -160,14 +160,6 @@
       <Variable x:TypeArguments="x:String" Name="strRawFolderPath" />
       <Variable x:TypeArguments="s:DateTime" Name="dateEndPeriod" />
       <Variable x:TypeArguments="s:DateTime" Default="[DateTime.MinValue]" Name="dateStartPeriod" />
-      <Variable x:TypeArguments="x:String" Name="userName" />
-      <Variable x:TypeArguments="ss:SecureString" Name="securePassword" />
-      <Variable x:TypeArguments="x:String" Name="endPoint" />
-      <Variable x:TypeArguments="x:String" Name="cityCode" />
-      <Variable x:TypeArguments="x:String" Name="reportType" />
-      <Variable x:TypeArguments="x:String" Name="action" />
-      <Variable x:TypeArguments="x:Int32" Name="messageIdLen" />
-      <Variable x:TypeArguments="x:String" Name="wsap" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtRawData" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -176,8 +168,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="633,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} [{1}]&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, Now)]" />
-    <If Condition="[Not in_isRerun]" DisplayName="If normal run, adddays(-1)" sap:VirtualizedContainerService.HintSize="633,804" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="632.8,124.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} [{1}]&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, Now)]" />
+    <If Condition="[Not in_isRerun]" DisplayName="If normal run, adddays(-1)" sap:VirtualizedContainerService.HintSize="632.8,776" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -185,7 +177,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="493,274" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="493.6,252" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -358,15 +350,9 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="to replace format on remote path such as {yyyyMM}/{yyyy}&#xA;*need System.Text.RegularExpressions namespace " Code="string pattern = &quot;{(.*?)}&quot;;&#xA;Regex regex = new Regex(pattern);&#xA;string outputString = regex.Replace(remotePath, match =&gt;&#xA;{&#xA;    string format = match.Groups[1].Value;&#xA;    return dateTime.ToString(format);&#xA;});&#xA;finalRemotePath = outputString;" DisplayName="Invoke Code Define File Name" sap:VirtualizedContainerService.HintSize="356,222" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
             <ui:InvokeCode.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="remotePath">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;Sheet Name&quot;).ToString" />
-              </InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="finalRemotePath">
-                <VisualBasicReference x:TypeArguments="x:String" ExpressionText="sheetName" />
-              </OutArgument>
-              <InArgument x:TypeArguments="s:DateTime" x:Key="dateTime">
-                <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateEndPeriod" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="remotePath">[in_TransactionItem.SpecificContent("Sheet Name").ToString]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="finalRemotePath">[sheetName]</OutArgument>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="dateTime">[dateEndPeriod]</InArgument>
             </ui:InvokeCode.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -376,22 +362,12 @@
           </ui:InvokeCode>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Gsheet_ReadRange.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Custom_Workflow\Gsheet_ReadRange.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-              </InArgument>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-              </InArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtRawData">
-                <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtRawData" />
-              </OutArgument>
+              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtRawData">[dtRawData]</OutArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_range" />
-              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">
-                <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateEndPeriod" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_sheetName">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="sheetName" />
-              </InArgument>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[dateEndPeriod]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_sheetName">[sheetName]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:WriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[dtRawData]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="356,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[dateEndPeriod.ToString(&quot;yyyyMM&quot;)]" WorkbookPath="[strFilePath]" />
